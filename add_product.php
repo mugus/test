@@ -1,5 +1,39 @@
 <?php
 include("./layout/header.php");
+
+include("./Config/db.php");
+
+if(isset($_POST['send'])){
+	$firstname = $_POST['firstname'];
+	$lastname = $_POST['lastname'];
+	$email = $_POST['email'];
+	$pass = $_POST['password'];
+	$password = password_hash($pass, PASSWORD_DEFAULT);
+
+
+
+
+
+	try{
+			$sql = "INSERT INTO users (firstname,lastname,email, password) 
+							VALUES (:firstname,:lastname,:email, :password)";
+			$stmt = $db->prepare($sql);
+			$stmt->bindParam(':firstname', $firstname);
+			$stmt->bindParam(':lastname', $lastname);
+			$stmt->bindParam(':email', $email);
+			$stmt->bindParam(':password', $password);
+			$stmt->execute();
+
+
+			if($stmt->rowCount()==1){
+				header("location: ./signin.php");
+			}else{
+				echo "<script>alert('not added');</script>";
+			}
+	}catch(PDOException $ex){
+			$result = "<p>Error occured: ".$ex->getMessage()."</p>";
+	}
+}
 ?>
 
 

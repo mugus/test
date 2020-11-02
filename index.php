@@ -18,9 +18,9 @@ if (isset($_POST['add'])){
           );
 
           $_SESSION['cart'][$count] = $item_array;
-          print_r($_SESSION['cart']);
+          //print_r($_SESSION['cart']);
       }
-
+      echo "<script>window.location = 'index.php'</script>";
   }else{
 
       $item_array = array(
@@ -29,7 +29,8 @@ if (isset($_POST['add'])){
 
       // Create new session variable
       $_SESSION['cart'][0] = $item_array;
-      print_r($_SESSION['cart']);
+      //print_r($_SESSION['cart']);
+      echo "<script>window.location = 'index.php'</script>";
   }
 }
 
@@ -52,7 +53,7 @@ if (isset($_POST['add'])){
 //     echo "Not set";
 //   }
 // }
-
+if(!isset($_SESSION['payment_id'])):
 ?>
 
 
@@ -101,7 +102,7 @@ if (isset($_POST['add'])){
               <span class="text-warning">AFRICAN STYLES</span>
               <h2 class="text-warning">100% <br/> Made in Africa</h2>
               <p class="text-white">Free Pickup and Delivery Available</p>
-              <a href="#" class="primary-btn">SHOP NOW</a>
+              <a href="./shop.php" class="primary-btn">SHOP NOW</a>
             </div>
           </div>
         </div>
@@ -197,6 +198,13 @@ if (isset($_POST['add'])){
   </section>
   <!-- Featured Section End -->
 
+<?php else: ?>
 
+  <script LANGUAGE='JavaScript'>
+alert("You have pending payment! lets remove it for you");
+window.location.href='./logout.php';
+</script>
+
+<?php endif ?>
 
 <?php include("./layout/footer.php"); ?>

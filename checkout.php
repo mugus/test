@@ -23,16 +23,27 @@ if(isset($_POST['checkout'])):
 
 
     if($stmt->rowCount()==1){
-      $id = $db->lastInsertId();
-      $to=$email;
-      $subject="Thanks to shop with us";
-      $from = 'AfricaXYZ';
-      $message = "<h1>Confirmation of purchase</h1>";
-      $message .= '<p>Thank for choosing us!</p>';
-      $headers = "From:".$from;
-      $headers .= "MIME-Version: 1.0\r\n";
-      $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-      mail($to,$subject,$message,$headers);
+      $payment_id = $db->lastInsertId();
+      $sqlQuery = "SELECT * FROM payments WHERE payment_id = :payment_id";
+      $statement = $db->prepare($sqlQuery);
+      $statement->execute(
+          array(
+              ':payment_id' => $payment_id
+          )
+      );			
+      $row=$statement->fetch(PDO::FETCH_ASSOC);
+      $member_id = $row['member_id'];
+      $_SESSION['payment_id']=$payment_id;
+          $em = $row['email'];
+          $to=$em;
+          $subject="Thanks to shop with us";
+          $from = 'AfricaXYZ';
+          $message = "<h1>Confirmation of purchase</h1>";
+          $message .= '<p>Thank for choosing us!</p>';
+          $headers = "From:".$from;
+          $headers .= "MIME-Version: 1.0\r\n";
+          $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+          mail($to,$subject,$message,$headers);
 
       echo "<script LANGUAGE='JavaScript'> window.location.href = './paypal.php';</script>";
       

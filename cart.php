@@ -119,8 +119,8 @@ if(isset($_GET['remove'])){
             <div class="col-lg-12">
               <div class="shoping__cart__btns">
                 <a href="./" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                <!-- <button type="submit" name="updatecart" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                  Upadate Cart</button> -->
+                <a href="./logout.php" type="submit" name="updatecart" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
+                  Clear Cart</a>
               </div>
             </div>
           </div>

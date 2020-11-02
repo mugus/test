@@ -2,7 +2,14 @@
 include("./layout/header.php");
 ?>
 <?php if(isset($_SESSION['cart'])):?>
-
+    <?php 
+    $total = 0;
+    if (isset($_SESSION['cart'])):
+    $product_id = array_column($_SESSION['cart'], "id");
+    while($res = $data->fetch(PDO::FETCH_ASSOC)): ?>
+    <?php foreach($product_id as $id): ?>
+    <?php if($res['id'] == $id):
+    $total = $total + (int)$res['price']; ?>
 <!-- Set up a container element for the button -->
 <div class="container">
   <div class="row">
@@ -17,14 +24,7 @@ include("./layout/header.php");
 
 <!-- Include the PayPal JavaScript SDK -->
 <script src="https://www.paypal.com/sdk/js?client-id=ATY6Ki_DVMfu87sD5r7YD4AtMyAZZyfUvVcMT5uqb1Q7AecJA4R312jq86dhVSyp3-Q7O37S1BM8hXpv&currency=USD"></script>
-<?php 
-    $total = 0;
-    if (isset($_SESSION['cart'])):
-    $product_id = array_column($_SESSION['cart'], "id");
-    while($res = $data->fetch(PDO::FETCH_ASSOC)): ?>
-    <?php foreach($product_id as $id): ?>
-    <?php if($res['id'] == $id):
-    $total = $total + (int)$res['price']; ?>
+
 <script>
     // Render the PayPal button into #paypal-button-container
     paypal.Buttons({
@@ -45,7 +45,7 @@ include("./layout/header.php");
             return actions.order.capture().then(function(details) {
                 // Show a success message to the buyer
                 //alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                window.location.href = './logout.php';
+                window.location.href = './success.php';
             });
         }
 

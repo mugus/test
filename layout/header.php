@@ -4,6 +4,21 @@ include("./Config/db.php");
 include("./config.php");
 $data = $db->query("SELECT * FROM products");
 $data->execute();
+
+$payment = $db->query("SELECT * FROM payments");
+$payment->execute();
+
+if (isset($_SESSION['email'])){
+  $em = $_SESSION['email'];
+  $sqlQuery = "SELECT * FROM users WHERE email=:email";
+  $statement = $db->prepare($sqlQuery);
+  $statement->execute(
+      array(
+          ':email' => $em
+      )
+  );			
+  $rows=$statement->fetch(PDO::FETCH_ASSOC);
+}
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -98,7 +113,11 @@ $data->execute();
                 ?></span></a></li>
             </ul>
             <div class="header__cart__price">
+            <?php if (isset($_SESSION['email'])):?>
+              <h5><?= $rows['firstname'] ?></h5>
+            <?php else: ?>
               <a href="./signup.php" class="site-btn">Get An Account</a>
+               <?php endif ?>
             </div>
           </div>
         </div>

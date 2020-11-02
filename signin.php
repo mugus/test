@@ -1,106 +1,38 @@
-<!DOCTYPE html>
-<html lang="zxx">
+<?php include('./layout/header.php'); ?>
+<?php
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="description" content="Ogani Template">
-  <meta name="keywords" content="Ogani, unica, creative, html">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>AfricaXYZ | E-commerce</title>
+if(isset($_POST['signin'])){
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  $sqlQuery = "SELECT * FROM users WHERE email = :email LIMIT 1";
+  $log = $db->prepare($sqlQuery);
+  $log->execute(
+      array(
+          ':email' => $email
+      )
+  );			
+  $output=$log->fetch(PDO::FETCH_ASSOC);
+  if($log->rowCount() > 0){
+    if(password_verify($password, $output['password'])){
+      $id = $output['id'];
+      $password = $output['password'];
+      $email = $output['email'];
+      $_SESSION['login'] = true;
+      $_SESSION['id']=$id;
+      $_SESSION['email']=$email;
+      echo "<script>alert('Working');</script>";
+      //header("location: ./index.php");
+   }else{
+    echo "<script>alert('password not match');</script>";
+   }
+      
+  }else{
+      // $result = "<p>Invalid credentials</p>";
+      echo "<script>alert('credentials not match');</script>";
+  }
+}
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-
-  <!-- Css Styles -->
-  <link rel="stylesheet" href="./assets/css/bootstrap.min.css" type="text/css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- <link rel="stylesheet" href="./assets/css/font-awesome.min.css" type="text/css"> -->
-  <link rel="stylesheet" href="./assets/css/elegant-icons.css" type="text/css">
-  <link rel="stylesheet" href="./assets/css/nice-select.css" type="text/css">
-  <link rel="stylesheet" href="./assets/css/jquery-ui.min.css" type="text/css">
-  <link rel="stylesheet" href="./assets/css/owl.carousel.min.css" type="text/css">
-  <link rel="stylesheet" href="./assets/css/slicknav.min.css" type="text/css">
-  <link rel="stylesheet" href="./assets/css/style.css" type="text/css">
-</head>
-
-<body>
-  <!-- Page Preloder -->
-  <div id="preloder">
-    <div class="loader"></div>
-  </div>
-
-  <!-- Humberger Begin -->
-  <div class="humberger__menu__overlay"></div>
-  <div class="humberger__menu__wrapper">
-    <div class="humberger__menu__logo">
-      <a href="#"><img src="./assets/images/logo.png" alt=""></a>
-    </div>
-    <div class="humberger__menu__widget">
-      <div class="header__top__right__auth">
-        <a href="#"><i class="fa fa-user"></i> Login</a>
-      </div>
-    </div>
-    <nav class="humberger__menu__nav mobile-menu">
-      <ul>
-        <li class="active"><a href="./index.html">Home</a></li>
-        <li><a href="./shop.html">Shop</a></li>
-        <li><a href="./contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <div id="mobile-menu-wrap"></div>
-    <div class="header__top__right__social">
-      <a href="#"><i class="fa fa-facebook"></i></a>
-      <a href="#"><i class="fa fa-twitter"></i></a>
-      <a href="#"><i class="fa fa-linkedin"></i></a>
-      <a href="#"><i class="fa fa-pinterest-p"></i></a>
-    </div>
-  </div>
-  <!-- Humberger End -->
-
-  <!-- Header Section Begin -->
-  <header class="header">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3">
-          <div class="header__logo">
-            <a href="./index.html"><img src="./assets/images/logo.png" alt=""></a>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <nav class="header__menu">
-            <ul>
-              <li class="active"><a href="./index.html">Home</a></li>
-              <li><a href="./shop.html">Shop</a></li>
-              <!-- <li><a href="#">Pages</a>
-                <ul class="header__menu__dropdown">
-                  <li><a href="./shop-details.html">Shop Details</a></li>
-                  <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                  <li><a href="./checkout.html">Check Out</a></li>
-                  <li><a href="./blog-details.html">Blog Details</a></li>
-                </ul> -->
-              </li>
-              <li><a href="./contact.html">Contact</a></li>
-            </ul>
-          </nav>
-        </div>
-        <div class="col-lg-3">
-          <div class="header__cart">
-            <ul>
-              <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-            </ul>
-            <div class="header__cart__price">
-              <button type="submit" class="site-btn">Get An Account</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="humberger__open">
-        <i class="fa fa-bars"></i>
-      </div>
-    </div>
-  </header>
-  <!-- Header Section End -->
+?>
 
   <!-- Breadcrumb Section Begin -->
   <section class="breadcrumb-section set-bg" data-setbg="./assets/images/5.jpg">
@@ -110,7 +42,7 @@
           <div class="breadcrumb__text">
             <h2>AfricaXYZ New Account</h2>
             <div class="breadcrumb__option">
-              <a href="./index.html">Home</a>
+              <a href="./index.php">Home</a>
               <span>Register Here</span>
             </div>
           </div>
@@ -132,31 +64,36 @@
           </div>
         </div>
       </div>
-      <form method="POST" action="#">
+      
         <div class="row">
+        <form method="POST" action="">
           <div class="col-lg-12 col-md-12">
-            <p>Email<span>*</span></p>
-            <input type="text" name="email" placeholder="Your Email">
-            <p>Password<span>*</span></p>
-            <input type="password" name="password" placeholder="Your Password">
-            <button type="submit" name="send" class="site-btn btn-block">Signin</button>
+            <div class="row">
+              <div class="col-lg-6 col-md-6">
+                <p>Email<span>*</span></p>
+                <input type="text" name="email" placeholder="Your Email">
+              </div>
+              <div class="col-lg-6 col-md-6">
+                <p>Password<span>*</span></p>
+                <input type="password" name="password" placeholder="Your Password">
+              </div>
+            </div>
+            <button type="submit" name="signin" class="site-btn btn-block">Signin</button>
           </div>
+        </form>
         </div>
-
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <p>Password Recorvery || <a href="./signup.html">New Account</a></p>
-          </div>
-        </div>
-
     </div>
-    </form>
+   
   </div>
   </div>
   <!-- signup Form End -->
 
 
-
+<!-- <form action="./signin.php" method="POST">
+<input type="text" name="email" placeholder="Your Email">
+<input type="password" name="password" placeholder="Your Password">
+<button type="submit" name="signin">Signin</button>
+</form> -->
 
 
   <!-- Footer Section Begin -->
