@@ -10,7 +10,8 @@ if(isset($_POST['signin'])){
       array(
           ':email' => $email
       )
-  );			
+  );
+  echo "<script>alert('Email Not found');</script>";
   $output=$log->fetch(PDO::FETCH_ASSOC);
   if($log->rowCount() > 0){
     if(password_verify($password, $output['password'])){
@@ -20,8 +21,8 @@ if(isset($_POST['signin'])){
       $_SESSION['login'] = true;
       $_SESSION['id']=$id;
       $_SESSION['email']=$email;
-      echo "<script>alert('Working');</script>";
-      //header("location: ./index.php");
+      //echo "<script>alert('Working');</script>";
+      header("location: ./index.php");
    }else{
     echo "<script>alert('password not match');</script>";
    }

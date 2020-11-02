@@ -8,6 +8,12 @@ $data->execute();
 $payment = $db->query("SELECT * FROM payments");
 $payment->execute();
 
+if (isset($_SESSION['cart'])){
+  $count = count($_SESSION['cart']);
+}else{
+  $zero = 0;
+}
+
 if (isset($_SESSION['email'])){
   $em = $_SESSION['email'];
   $sqlQuery = "SELECT * FROM users WHERE email=:email";
@@ -66,7 +72,8 @@ if (isset($_SESSION['email'])){
     <nav class="humberger__menu__nav mobile-menu">
       <ul>
         <li class="active"><a href="./index.php">Home</a></li>
-        <li><a href="./shop.php">Shop</a></li>
+        <li><a href="./shop.php">Shop</a></li>  
+        <li><a href="./add_product.php">Add Product</a></li>
         <li><a href="./contact.php">Contact</a></li>
       </ul>
     </nav>
@@ -94,7 +101,7 @@ if (isset($_SESSION['email'])){
             <ul>
               <li class="active"><a href="./index.php">Home</a></li>
               <li><a href="./shop.php">Shop</a></li>
-              </li>
+              <li><a href="./add_product.php">Add Product</a></li>
               <li><a href="./contact.php">Contact</a></li>
             </ul>
           </nav>
@@ -103,14 +110,12 @@ if (isset($_SESSION['email'])){
           <div class="header__cart">
             <ul>
               <li><a href="./cart.php"><i class="fa fa-shopping-bag"></i> <span>
-                <?php 
-                  if (isset($_SESSION['cart'])){
-                    $count = count($_SESSION['cart']);
-                    echo $count;
-                  }else{
-                    echo 0; 
-                  }
-                ?></span></a></li>
+                <?php if (isset($_SESSION['cart'])): ?>
+                    <?= $count ?>
+                <?php else: ?>
+                  <?= $zero ?>
+                <?php endif ?>
+                  </span></a></li>
             </ul>
             <div class="header__cart__price">
             <?php if (isset($_SESSION['email'])):?>

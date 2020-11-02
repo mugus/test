@@ -35,20 +35,9 @@ if(isset($_SESSION['payment_id'])):
         <h4>Hi <?= $row['firstname'] ?> <?= $row['lastname'] ?>,</h4>
         <p>We got your order! We will let you know when it ships and is headed your way</p>
         <p>You payed $<?= $row['total'] ?></p>
-        <p><?= $row['email'] ?></p>
-        <?php
-          $em = $row['email'];
-          $to=$em;
-          $subject="Thanks to shop with us";
-          $from = 'AfricaXYZ';
-          $message = "<h1>Confirmation of purchase</h1>";
-          $message .= '<p>Thank for choosing us!</p>';
-          $headers = "From:".$from;
-          $headers .= "MIME-Version: 1.0\r\n";
-          $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-          mail($to,$subject,$message,$headers);
-        ?>
-        <a href="./logout.php" class="btn btn-primary btn-sm">Back to Shop</a>
+        <hr>
+        <a href="./logout.php" class="btn btn-primary btn-sm btn-block">Back to Shop</a>
+<br>
       </div>
       <div class="col-sm-4"></div>
   </div>

@@ -3,30 +3,32 @@ include("./layout/header.php");
 
 include("./Config/db.php");
 
-if(isset($_POST['send'])){
-	$firstname = $_POST['firstname'];
-	$lastname = $_POST['lastname'];
-	$email = $_POST['email'];
-	$pass = $_POST['password'];
-	$password = password_hash($pass, PASSWORD_DEFAULT);
+if (isset($_SESSION['email'])):
 
 
-
-
+if(isset($_POST['add_product'])){
+  $User_id = $rows['id'];
+	$name = $_POST['name'];
+	$price = $_POST['price'];
+	$size = $_POST['size'];
+	$qty = $_POST['qty'];
+  $description = $_POST['description'];
 
 	try{
-			$sql = "INSERT INTO users (firstname,lastname,email, password) 
-							VALUES (:firstname,:lastname,:email, :password)";
+			$sql = "INSERT INTO products (name,price,size, qty, description, User_id) 
+							VALUES (:name,:price,:size, :qty, :description :User_id)";
 			$stmt = $db->prepare($sql);
-			$stmt->bindParam(':firstname', $firstname);
-			$stmt->bindParam(':lastname', $lastname);
+			$stmt->bindParam(':name', $name);
+			$stmt->bindParam(':price', $price);
 			$stmt->bindParam(':email', $email);
-			$stmt->bindParam(':password', $password);
+      $stmt->bindParam(':qty', $qty);
+      $stmt->bindParam(':description', $description);
+      $stmt->bindParam(':User_id', $User_id);
 			$stmt->execute();
 
 
 			if($stmt->rowCount()==1){
-				header("location: ./signin.php");
+				header("location: ./add_product.php");
 			}else{
 				echo "<script>alert('not added');</script>";
 			}
@@ -56,10 +58,10 @@ if(isset($_POST['send'])){
       <div class="row">
         <div class="col-lg-12 text-center">
           <div class="breadcrumb__text">
-            <h2>AfricaXYZ Checkout</h2>
+            <h2>AfricaXYZ Add Product</h2>
             <div class="breadcrumb__option">
               <a href="./index.html">Home</a>
-              <span>Checkout</span>
+              <span>Add Product</span>
             </div>
           </div>
         </div>
@@ -73,20 +75,20 @@ if(isset($_POST['send'])){
     <div class="container">
       <div class="checkout__form">
         <h4>Add Product</h4>
-        <form action="#">
+        <form method="POST" action="">
           <div class="row">
             <div class="col-lg-8 col-md-6">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="checkout__input">
                     <p>Product Name<span>*</span></p>
-                    <input type="text">
+                    <input type="text" name="name" placeholder="Add Product Name">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="checkout__input">
                     <p>Product Price<span>*</span></p>
-                    <input type="text">
+                    <input type="text" name="price" placeholder="Add Product Price">
                   </div>
                 </div>
               </div>
@@ -95,25 +97,25 @@ if(isset($_POST['send'])){
                 <div class="col-lg-6">
                   <div class="checkout__input">
                     <p>Product Size<span>*</span></p>
-                    <input type="text" name="size" placeholder="Product size">
+                    <input type="text" name="size" placeholder="Add Product size">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="checkout__input">
                     <p>Product Quantity<span>*</span></p>
-                    <input type="number" name="quantity" placeholder="Quantity(Stock)">
+                    <input type="number" name="qty" placeholder="Add Quantity(Stock)">
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-12">
                   <div class="checkout__input">
-                    <textarea class="form-control" name="" id="" cols="10" rows="4" placeholder="Product Description ...."></textarea>
+                    <textarea class="form-control" name="description" id="" cols="10" rows="4" placeholder="Add Product Description ...."></textarea>
                   </div> 
                 </div>
                 <div class="col-lg-12">
                   <div class="checkout__input">
-                    <button type="submit"  class="site-btn">Add Product</button>
+                    <button type="submit" name="add_product" class="site-btn">Add Product</button>
                   </div> 
                 </div>
               </div>
@@ -185,6 +187,14 @@ if(isset($_POST['send'])){
     </div>
   </footer>
 
+<?php else:?>
+
+  <script>
+  window.location.href='./signin.php';
+  alert('Login first');
+  </script>
+
+<?php endif ?>
 
 
   <!-- Js Plugins -->
