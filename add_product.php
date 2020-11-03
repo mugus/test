@@ -1,34 +1,29 @@
+<?php include("./layout/header.php"); ?>
+
+<?php if (isset($_SESSION['email'])): ?>
+
 <?php
-include("./layout/header.php");
-
-include("./Config/db.php");
-
-if (isset($_SESSION['email'])):
-
-
-if(isset($_POST['add_product'])){
-  $User_id = $rows['id'];
+if(isset($_POST['add_pro'])){
 	$name = $_POST['name'];
 	$price = $_POST['price'];
 	$size = $_POST['size'];
 	$qty = $_POST['qty'];
   $description = $_POST['description'];
+  $User_id = $rows['id'];
 
 	try{
-			$sql = "INSERT INTO products (name,price,size, qty, description, User_id) 
-							VALUES (:name,:price,:size, :qty, :description :User_id)";
-			$stmt = $db->prepare($sql);
-			$stmt->bindParam(':name', $name);
-			$stmt->bindParam(':price', $price);
-			$stmt->bindParam(':email', $email);
-      $stmt->bindParam(':qty', $qty);
-      $stmt->bindParam(':description', $description);
-      $stmt->bindParam(':User_id', $User_id);
-			$stmt->execute();
+      $sql = "INSERT INTO products (name, price, size, qty, description, User_id) VALUES (:name, :price, :size, :qty, :description, :User_id)";
+      $action = $db->prepare($sql);
+			$action->bindParam(':name', $name);
+			$action->bindParam(':price', $price);
+			$action->bindParam(':size', $size);
+      $action->bindParam(':qty', $qty);
+      $action->bindParam(':description', $description);
+      $action->bindParam(':User_id', $User_id);
+			$action->execute();
 
-
-			if($stmt->rowCount()==1){
-				header("location: ./add_product.php");
+			if($action->rowCount()==1){
+        $result = "<p>Your Product added</p>";
 			}else{
 				echo "<script>alert('not added');</script>";
 			}
@@ -37,19 +32,6 @@ if(isset($_POST['add_product'])){
 	}
 }
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   <!-- Breadcrumb Section Begin -->
@@ -69,7 +51,7 @@ if(isset($_POST['add_product'])){
     </div>
   </section>
   <!-- Breadcrumb Section End -->
-
+  
   <!-- Checkout Section Begin -->
   <section class="checkout spad">
     <div class="container">
@@ -115,7 +97,7 @@ if(isset($_POST['add_product'])){
                 </div>
                 <div class="col-lg-12">
                   <div class="checkout__input">
-                    <button type="submit" name="add_product" class="site-btn">Add Product</button>
+                    <button type="submit" name="add_pro" class="site-btn">Add Product</button>
                   </div> 
                 </div>
               </div>
