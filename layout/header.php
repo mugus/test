@@ -2,8 +2,9 @@
 session_start();
 include("./Config/db.php");
 include("./config.php");
-$data = $db->query("SELECT * FROM products");
+$data = $db->query("SELECT * FROM products ORDER BY id, id DESC");
 $data->execute();
+$countrow = $data->rowCount();
 
 $payment = $db->query("SELECT * FROM payments");
 $payment->execute();
@@ -24,6 +25,41 @@ if (isset($_SESSION['email'])){
       )
   );			
   $rows=$statement->fetch(PDO::FETCH_ASSOC);
+}
+
+
+
+if (isset($_POST['add'])){
+  /// print_r($_POST['id']);
+  if(isset($_SESSION['cart'])){
+
+      $item_array_id = array_column($_SESSION['cart'], "id");
+
+      if(in_array($_POST['id'], $item_array_id)){
+          echo "<script>alert('Product is already added in the cart..!')</script>";
+          echo "<script>window.location = 'index.php'</script>";
+      }else{
+
+          $count = count($_SESSION['cart']);
+          $item_array = array(
+              'id' => $_POST['id']
+          );
+
+          $_SESSION['cart'][$count] = $item_array;
+          //print_r($_SESSION['cart']);
+      }
+      echo "<script>window.location = 'index.php'</script>";
+  }else{
+
+      $item_array = array(
+              'id' => $_POST['id']
+      );
+
+      // Create new session variable
+      $_SESSION['cart'][0] = $item_array;
+      //print_r($_SESSION['cart']);
+      echo "<script>window.location = 'index.php'</script>";
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -66,7 +102,12 @@ if (isset($_SESSION['email'])){
     </div>
     <div class="humberger__menu__widget">
       <div class="header__top__right__auth">
-        <a href="./signin.php"><i class="fa fa-user"></i> Login</a>
+        <?php if (isset($_SESSION['email'])):?>
+          <a href="./logout.php"><i class="fa fa-user"></i> Logout</a>
+        <?php else: ?>
+          <a href="./signin.php"><i class="fa fa-user"></i> Login</a>
+        <?php endif ?>
+        
       </div>
     </div>
     <nav class="humberger__menu__nav mobile-menu">
@@ -118,11 +159,11 @@ if (isset($_SESSION['email'])){
                   </span></a></li>
             </ul>
             <div class="header__cart__price">
-            <?php if (isset($_SESSION['email'])):?>
-              <h5><?= $rows['firstname'] ?></h5>
-            <?php else: ?>
-              <a href="./signup.php" class="site-btn">Get An Account</a>
-               <?php endif ?>
+              <?php if (isset($_SESSION['email'])):?>
+                <a href="./logout.php" class="site-btn">Sign Out</a>
+              <?php else: ?>
+                <a href="./signup.php" class="site-btn">Get An Account</a>
+              <?php endif ?>
             </div>
           </div>
         </div>

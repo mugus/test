@@ -40,136 +40,22 @@ include("./layout/header.php");
           </div>
         </div>
         <div class="col-lg-9 col-md-7">
-          <div class="product__discount">
-            <div class="section-title product__discount__title">
-              <h2>Sale Off</h2>
-            </div>
-            <div class="row">
-              <div class="product__discount__slider owl-carousel">
-                <div class="col-lg-4">
-                  <div class="product__discount__item">
-                    <div class="product__discount__item__pic set-bg" data-setbg="./assets/images/3.jpg">
-                      <div class="product__discount__percent">-20%</div>
-                      <ul class="product__item__pic__hover">
-                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                      </ul>
-                    </div>
-                    <div class="product__discount__item__text">
-                      <span>Kigali</span>
-                      <h5><a href="#">African Cloths</a></h5>
-                      <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="product__discount__item">
-                    <div class="product__discount__item__pic set-bg" data-setbg="./assets/images/men_c.jpg">
-                      <div class="product__discount__percent">-20%</div>
-                      <ul class="product__item__pic__hover">
-                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                      </ul>
-                    </div>
-                    <div class="product__discount__item__text">
-                      <span>Vegetables</span>
-                      <h5><a href="#">Rwandan’s package</a></h5>
-                      <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="product__discount__item">
-                    <div class="product__discount__item__pic set-bg" data-setbg="./assets/images/3.jpg">
-                      <div class="product__discount__percent">-20%</div>
-                      <ul class="product__item__pic__hover">
-                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                      </ul>
-                    </div>
-                    <div class="product__discount__item__text">
-                      <span>Kigali</span>
-                      <h5><a href="#">Mixed culture</a></h5>
-                      <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="product__discount__item">
-                    <div class="product__discount__item__pic set-bg" data-setbg="./assets/images/men_c.jpg">
-                      <div class="product__discount__percent">-20%</div>
-                      <ul class="product__item__pic__hover">
-                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                      </ul>
-                    </div>
-                    <div class="product__discount__item__text">
-                      <span>Kigali</span>
-                      <h5><a href="#">African Cloths</a></h5>
-                      <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="product__discount__item">
-                    <div class="product__discount__item__pic set-bg" data-setbg="./assets/images/3.jpg">
-                      <div class="product__discount__percent">-20%</div>
-                      <ul class="product__item__pic__hover">
-                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                      </ul>
-                    </div>
-                    <div class="product__discount__item__text">
-                      <span>Kigali</span>
-                      <h5><a href="#">African Cloths</a></h5>
-                      <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4">
-                  <div class="product__discount__item">
-                    <div class="product__discount__item__pic set-bg" data-setbg="./assets/images/men_c.jpg">
-                      <div class="product__discount__percent">-20%</div>
-                      <ul class="product__item__pic__hover">
-                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                      </ul>
-                    </div>
-                    <div class="product__discount__item__text">
-                      <span>Kigali</span>
-                      <h5><a href="#">African Cloths</a></h5>
-                      <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="filter__item">
             <div class="row">
               <div class="col-lg-6 col-md-7">
                 <div class="filter__sort">
-                  <span>Sort By</span>
-                  <select>
-                    <option value="0">Default</option>
-                    <option value="0">Default</option>
-                  </select>
+                  <span>Our Shop</span>
                 </div>
               </div>
               <div class="col-lg-6 col-md-5">
                 <div class="filter__found">
-                  <h6><span>16</span> Products found</h6>
+                  <h6><span><?= $countrow ?></span> Products found</h6>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
+          <?php while($result = $data->fetch(PDO::FETCH_ASSOC)): ?>
             <div class="col-lg-4 col-md-6 col-sm-6">
               <div class="product__item">
                 <div class="product__item__pic set-bg" data-setbg="./assets/images/women.jpg">
@@ -180,176 +66,12 @@ include("./layout/header.php");
                   </ul>
                 </div>
                 <div class="product__item__text">
-                  <h6><a href="#">Made In Rwanda</a></h6>
-                  <h5>$30.00</h5>
+                  <h6><a href="#"><?= $result['name'] ?></a></h6>
+                  <h5><?= $result['currency'] ?><?= $result['price'] ?></h5>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="product__item">
-                <div class="product__item__pic set-bg" data-setbg="./assets/images/3.jpg">
-                  <ul class="product__item__pic__hover">
-                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product__item__text">
-                  <h6><a href="#">Made In Rwanda</a></h6>
-                  <h5>$30.00</h5>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="product__item">
-                <div class="product__item__pic set-bg" data-setbg="./assets/images/7.jpg">
-                  <ul class="product__item__pic__hover">
-                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product__item__text">
-                  <h6><a href="#">Made In Rwanda</a></h6>
-                  <h5>$30.00</h5>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="product__item">
-                <div class="product__item__pic set-bg" data-setbg="./assets/images/men_c.jpg">
-                  <ul class="product__item__pic__hover">
-                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product__item__text">
-                  <h6><a href="#">Made In Rwanda</a></h6>
-                  <h5>$30.00</h5>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="product__item">
-                <div class="product__item__pic set-bg" data-setbg="./assets/images/men_t.jpg">
-                  <ul class="product__item__pic__hover">
-                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product__item__text">
-                  <h6><a href="#">Made In Rwanda</a></h6>
-                  <h5>$30.00</h5>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="product__item">
-                <div class="product__item__pic set-bg" data-setbg="./assets/images/3.jpg">
-                  <ul class="product__item__pic__hover">
-                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product__item__text">
-                  <h6><a href="#">Made In Rwanda</a></h6>
-                  <h5>$30.00</h5>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="product__item">
-                <div class="product__item__pic set-bg" data-setbg="./assets/images/women.jpg">
-                  <ul class="product__item__pic__hover">
-                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product__item__text">
-                  <h6><a href="#">Made In Rwanda</a></h6>
-                  <h5>$30.00</h5>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="product__item">
-                <div class="product__item__pic set-bg" data-setbg="./assets/images/men_t.jpg">
-                  <ul class="product__item__pic__hover">
-                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product__item__text">
-                  <h6><a href="#">Made In Rwanda</a></h6>
-                  <h5>$30.00</h5>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="product__item">
-                <div class="product__item__pic set-bg" data-setbg="./assets/images/5.jpg">
-                  <ul class="product__item__pic__hover">
-                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product__item__text">
-                  <h6><a href="#">Made In Rwanda</a></h6>
-                  <h5>$30.00</h5>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="product__item">
-                <div class="product__item__pic set-bg" data-setbg="./assets/images/2.jpg">
-                  <ul class="product__item__pic__hover">
-                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product__item__text">
-                  <h6><a href="#">Made In Rwanda</a></h6>
-                  <h5>$30.00</h5>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="product__item">
-                <div class="product__item__pic set-bg" data-setbg="./assets/images/men_c.jpg">
-                  <ul class="product__item__pic__hover">
-                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product__item__text">
-                  <h6><a href="#">Made In Rwanda</a></h6>
-                  <h5>$30.00</h5>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="product__item">
-                <div class="product__item__pic set-bg" data-setbg="./assets/images/women.jpg">
-                  <ul class="product__item__pic__hover">
-                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                  </ul>
-                </div>
-                <div class="product__item__text">
-                  <h6><a href="#">Made In Rwanda</a></h6>
-                  <h5>$30.00</h5>
-                </div>
-              </div>
-            </div>
+            <?php endwhile ?>
           </div>
           <div class="product__pagination">
             <a href="#">1</a>

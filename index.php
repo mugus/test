@@ -80,8 +80,11 @@ if(!isset($_SESSION['payment_id'])):
             <div class="hero__search__form">
               <form action="#">
                 <div class="hero__search__categories">
-                  All Categories
-                  <span class="fa fa-sort-down"></span>
+                  <?php if (isset($_SESSION['email'])):?>
+                    <h5><?= $rows['firstname'] ?></h5>
+                  <?php else: ?>
+                    Categories
+                  <?php endif ?>
                 </div>
                 <input type="text" placeholder="What do yo u need?">
                 <button type="submit" class="site-btn">SEARCH</button>
@@ -162,17 +165,20 @@ if(!isset($_SESSION['payment_id'])):
           </div>
           <div class="featured__controls">
             <ul>
-              <li class="active" data-filter="*">All</li>
-              <li data-filter=".Men">Men</li>
-              <li data-filter=".women">Women</li>
+              <li class="active" data-filter="*">All(Popular 8)</li>
             </ul>
           </div>
         </div>
       </div>
       <div class="row featured__filter">
-<?php while($res = $data->fetch(PDO::FETCH_ASSOC)): ?>
+      <?php 
+        $counter = 0;
+        $max = 6;
+        while($res = $data->fetch(PDO::FETCH_ASSOC)  AND ($counter < $max)): 
+          $counter++;
+      ?>
 
-        <div class="col-lg-3 col-md-4 col-sm-6 mix Men women">
+        <div class="col-lg-4 col-md-4 col-sm-4">
           <div class="featured__item">
             <div class="featured__item__pic set-bg" data-setbg="./assets/images/men_t.jpg">
               <ul class="featured__item__pic__hover">
