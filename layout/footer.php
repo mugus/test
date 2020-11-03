@@ -70,6 +70,8 @@
   <script src="./assets/js/owl.carousel.min.js"></script>
   <script src="./assets/js/main.js"></script>
 
+  <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
   <script>
